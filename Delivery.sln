@@ -32,13 +32,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourierService.API", "Couri
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourierService.Domain", "CourierService.Domain\CourierService.Domain.csproj", "{6AD446DE-C6D6-48D9-8591-5A5D30A537DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourierService.Infra", "CourierService.Infra\CourierService.Infra.csproj", "{BFFEA567-9D7E-4AB1-BFD6-37410BB3F03C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourierService.Infrastructure", "CourierService.Infrastructure\CourierService.Infrastructure.csproj", "{BFFEA567-9D7E-4AB1-BFD6-37410BB3F03C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourierService.Application", "CourierService.Application\CourierService.Application.csproj", "{6AF36CD4-FADA-4494-B4F8-DFC14F654C96}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdministratorService.Domain", "AdministratorService.Domain\AdministratorService.Domain.csproj", "{8DF23659-1A5E-40F0-96C9-63A463892660}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdministratorService.Infra", "AdministratorService.Infra\AdministratorService.Infra.csproj", "{C5EB2057-55A2-40CB-9193-93289884C3DF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdministratorService.Infrastructure", "AdministratorService.Infrastructure\AdministratorService.Infrastructure.csproj", "{C5EB2057-55A2-40CB-9193-93289884C3DF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdministratorService.Application", "AdministratorService.Application\AdministratorService.Application.csproj", "{F50792D1-1792-4AC2-B19F-160BC7E4B788}"
 EndProject
@@ -48,13 +48,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryService.API", "Deli
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryService.Domain", "DeliveryService.Domain\DeliveryService.Domain.csproj", "{4AB1D347-7BF6-4F4F-9372-BC7D71932B9A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryService.Infra", "DeliveryService.Infra\DeliveryService.Infra.csproj", "{5E544088-7189-434D-8860-453EB0CF05C9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryService.Infrastructure", "DeliveryService.Infrastructure\DeliveryService.Infrastructure.csproj", "{5E544088-7189-434D-8860-453EB0CF05C9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryService.Application", "DeliveryService.Application\DeliveryService.Application.csproj", "{6E563E46-0D57-4682-BB47-A8EF16A35DE4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderHistoryService.Domain", "OrderHistoryService.Domain\OrderHistoryService.Domain.csproj", "{44A341F2-3EBA-4F1A-BC49-D7AD2724707B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderHistoryService.Infra", "OrderHistoryService.Infra\OrderHistoryService.Infra.csproj", "{11ADCCCF-0F94-4CBF-AC11-19B6AAF461DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderHistoryService.Infrastructure", "OrderHistoryService.Infrastructure\OrderHistoryService.Infrastructure.csproj", "{11ADCCCF-0F94-4CBF-AC11-19B6AAF461DA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderHistoryService.Application", "OrderHistoryService.Application\OrderHistoryService.Application.csproj", "{12F89ECF-76A4-4F7D-A8E0-B07526AE491F}"
 EndProject
@@ -64,13 +64,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderHistoryService.API", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderService.Domain", "OrderService.Domain\OrderService.Domain.csproj", "{AC7CF437-F416-44F0-9572-EB6349A103D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderService.Infra", "OrderService.Infra\OrderService.Infra.csproj", "{2AD88B5D-D9A3-45A3-9F9A-D6126EC31BDB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderService.Infrastructure", "OrderService.Infrastructure\OrderService.Infrastructure.csproj", "{2AD88B5D-D9A3-45A3-9F9A-D6126EC31BDB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderService.Application", "OrderService.Application\OrderService.Application.csproj", "{42288326-A7D7-4223-B334-FE1390C9C3C6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaitingService.Domain", "RaitingService.Domain\RaitingService.Domain.csproj", "{50481B22-B321-4C89-9F6F-056FAC821088}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaitingService.Infra", "RaitingService.Infra\RaitingService.Infra.csproj", "{87F18938-A1E1-422A-9479-1174498B224C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaitingService.Infrastructure", "RaitingService.Infrastructure\RaitingService.Infrastructure.csproj", "{87F18938-A1E1-422A-9479-1174498B224C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaitingService.Application", "RaitingService.Application\RaitingService.Application.csproj", "{9D9E7E44-C8D2-4442-8D39-60129B1D77AA}"
 EndProject
@@ -80,7 +80,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SupplierService.API", "Supp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SupplierService.Domain", "SupplierService.Domain\SupplierService.Domain.csproj", "{8DF79C56-6418-417D-82BA-EC19E116ABAF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SupplierService.Infra", "SupplierService.Infra\SupplierService.Infra.csproj", "{6B03BC3C-7F61-46B2-B13A-C8185D342070}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SupplierService.Infrastructure", "SupplierService.Infrastructure\SupplierService.Infrastructure.csproj", "{6B03BC3C-7F61-46B2-B13A-C8185D342070}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SupplierService.Application", "SupplierService.Application\SupplierService.Application.csproj", "{86532C42-CB83-4649-A1FD-DE99EFC12EF4}"
 EndProject
