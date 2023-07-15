@@ -7,10 +7,14 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Folder Include="Entities\"/>
-        <Folder Include="Exceptions\"/>
-        <Folder Include="Repositories\"/>
-        <Folder Include="Services\"/>
+        <Folder Include="Entities\" />
+        <Folder Include="Exceptions\" />
+        <Folder Include="Repositories\" />
+        <Folder Include="Services\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Delivery.BaseLib\Delivery.BaseLib.csproj" />
     </ItemGroup>
 
 </Project>
