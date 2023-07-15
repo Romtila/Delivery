@@ -14,10 +14,16 @@ public class BaseRepository<T> : IBaseRepository<T> where T : class
     }
 
     public void Add(T entity)
-        => Context.Set<T>().Add(entity);
+    {
+        Context.Set<T>().Add(entity);
+        Context.SaveChanges();
+    }
 
     public void Add(IEnumerable<T> entities)
-        => Context.Set<T>().AddRange(entities);
+    {
+        Context.Set<T>().AddRange(entities);
+        Context.SaveChanges();
+    }
 
     public void Update(T entity)
     {
@@ -31,7 +37,7 @@ public class BaseRepository<T> : IBaseRepository<T> where T : class
         Context.SaveChanges();
     }
 
-    public T? Find(int id)
+    public T? Find(long id)
         => Context.Set<T>().Find(id);
 
     public T? Find(Expression<Func<T, bool>> expression)
@@ -59,7 +65,7 @@ public class BaseRepository<T> : IBaseRepository<T> where T : class
         await Context.SaveChangesAsync(ct);
     }
 
-    public async Task<T?> FindAsync(int id, CancellationToken ct)
+    public async Task<T?> FindAsync(long id, CancellationToken ct)
         => await Context.Set<T>().FindAsync(id, ct);
 
     public async Task<T?> FindAsync(Expression<Func<T, bool>> expression, CancellationToken ct)

@@ -2,7 +2,7 @@ using OrderHistoryService.Domain.Entities;
 using OrderHistoryService.Domain.Events.DeliveryService;
 using OrderHistoryService.Domain.Events.SupplierService;
 
-namespace OrderHistoryService.Domain.Services;
+namespace OrderHistoryService.Domain.Services.Interfaces;
 
 public interface IOrderHistoryService
 {

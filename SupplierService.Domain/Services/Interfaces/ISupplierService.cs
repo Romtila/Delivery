@@ -1,6 +1,6 @@
 using SupplierService.Domain.Entities;
 
-namespace SupplierService.Domain.Services;
+namespace SupplierService.Domain.Services.Interfaces;
 
 public interface ISupplierService
 {

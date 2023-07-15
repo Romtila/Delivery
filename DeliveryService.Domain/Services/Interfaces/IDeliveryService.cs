@@ -1,7 +1,7 @@
 using DeliveryService.Domain.Entities;
 using DeliveryService.Domain.Events.SupplierService;
 
-namespace DeliveryService.Domain.Services;
+namespace DeliveryService.Domain.Services.Interfaces;
 
 public interface IDeliveryService
 {

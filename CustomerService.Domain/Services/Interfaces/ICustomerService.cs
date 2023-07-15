@@ -1,6 +1,6 @@
 using CustomerService.Domain.Entities;
 
-namespace CustomerService.Domain.Services;
+namespace CustomerService.Domain.Services.Interfaces;
 
 public interface ICustomerService
 {

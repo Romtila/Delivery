@@ -1,7 +1,7 @@
 using OrderService.Domain.Commands;
 using OrderService.Domain.Entities;
 
-namespace OrderService.Domain.Services;
+namespace OrderService.Domain.Services.Interfaces;
 
 public interface IOrderService
 {
