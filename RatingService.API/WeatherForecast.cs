@@ -1,4 +1,4 @@
-namespace RaitingService.API;
+namespace RatingService.API;
 
 public class WeatherForecast
 {

@@ -3,6 +3,6 @@ using OrderService.Domain.Entities;
 
 namespace OrderService.Domain.Repositories;
 
-public interface IOrderItemRepository : IRepositoryBase<OrderItem>
+public interface IOrderItemRepository : IBaseRepository<OrderItem>
 {
 }

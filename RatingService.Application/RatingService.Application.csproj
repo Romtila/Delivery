@@ -7,13 +7,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\RaitingService.Domain\RaitingService.Domain.csproj"/>
+        <ProjectReference Include="..\RatingService.Domain\RatingService.Domain.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Configurations\"/>
-        <Folder Include="DbContext\"/>
-        <Folder Include="Repositories\"/>
+        <Folder Include="Dtos\" />
+        <Folder Include="MapperProfiles\" />
+        <Folder Include="Services\" />
     </ItemGroup>
 
 </Project>

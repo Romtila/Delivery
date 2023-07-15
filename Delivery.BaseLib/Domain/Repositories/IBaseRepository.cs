@@ -2,7 +2,7 @@ using System.Linq.Expressions;
 
 namespace Delivery.BaseLib.Domain.Repositories;
 
-public interface IRepositoryBase<T> where T : class
+public interface IBaseRepository<T> where T : class
 {
     void Add(T entity);
     void Add(IEnumerable<T> entities);

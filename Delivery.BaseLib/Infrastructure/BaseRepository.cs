@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Delivery.BaseLib.Infrastructure;
 
-public class RepositoryBase<T> : IRepositoryBase<T> where T : class
+public class BaseRepository<T> : IBaseRepository<T> where T : class
 {
     protected readonly DbContext Context;
 
-    public RepositoryBase(DbContext context)
+    public BaseRepository(DbContext context)
     {
         Context = context;
     }

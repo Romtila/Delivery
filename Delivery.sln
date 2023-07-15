@@ -12,7 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OrderHistoryService", "Orde
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DeliveryService", "DeliveryService", "{544ED999-AE22-4E4A-BDA2-515CDF068079}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RaitingService", "RaitingService", "{AFC32317-DA21-48ED-BF46-1A99F2AC1032}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RatingService", "RatingService", "{AFC32317-DA21-48ED-BF46-1A99F2AC1032}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AdministratorService", "AdministratorService", "{2C673C12-0887-4E0A-98AD-BDF127C71AB4}"
 EndProject
@@ -64,13 +64,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderService.Infrastructure
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderService.Application", "OrderService.Application\OrderService.Application.csproj", "{42288326-A7D7-4223-B334-FE1390C9C3C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaitingService.Domain", "RaitingService.Domain\RaitingService.Domain.csproj", "{50481B22-B321-4C89-9F6F-056FAC821088}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RatingService.Domain", "RatingService.Domain\RatingService.Domain.csproj", "{50481B22-B321-4C89-9F6F-056FAC821088}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaitingService.Infrastructure", "RaitingService.Infrastructure\RaitingService.Infrastructure.csproj", "{87F18938-A1E1-422A-9479-1174498B224C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RatingService.Infrastructure", "RatingService.Infrastructure\RatingService.Infrastructure.csproj", "{87F18938-A1E1-422A-9479-1174498B224C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaitingService.Application", "RaitingService.Application\RaitingService.Application.csproj", "{9D9E7E44-C8D2-4442-8D39-60129B1D77AA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RatingService.Application", "RatingService.Application\RatingService.Application.csproj", "{9D9E7E44-C8D2-4442-8D39-60129B1D77AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaitingService.API", "RaitingService.API\RaitingService.API.csproj", "{2E03FFEF-5CED-4B94-9D25-166905B79211}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RatingService.API", "RatingService.API\RatingService.API.csproj", "{2E03FFEF-5CED-4B94-9D25-166905B79211}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SupplierService.API", "SupplierService.API\SupplierService.API.csproj", "{F0337C29-EA05-4E56-943D-903BC71C53EE}"
 EndProject

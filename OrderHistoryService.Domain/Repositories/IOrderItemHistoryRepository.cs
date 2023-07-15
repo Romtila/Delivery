@@ -3,6 +3,6 @@ using OrderHistoryService.Domain.Entities;
 
 namespace OrderHistoryService.Domain.Repositories;
 
-public interface IOrderItemHistoryRepository : IRepositoryBase<OrderItemHistory>
+public interface IOrderItemHistoryRepository : IBaseRepository<OrderItemHistory>
 {
 }

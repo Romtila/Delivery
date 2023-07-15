@@ -3,6 +3,6 @@ using Delivery.BaseLib.Domain.Repositories;
 
 namespace CustomerService.Domain.Repositories;
 
-public interface ICustomerRepository : IRepositoryBase<Customer>
+public interface ICustomerRepository : IBaseRepository<Customer>
 {
 }

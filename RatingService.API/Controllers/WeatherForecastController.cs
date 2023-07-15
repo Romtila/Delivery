@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace RaitingService.API.Controllers;
+namespace RatingService.API.Controllers;
 
 [ApiController]
 [Route("[controller]")]

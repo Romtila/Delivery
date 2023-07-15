@@ -3,6 +3,6 @@ using SupplierService.Domain.Entities;
 
 namespace SupplierService.Domain.Repositories;
 
-public interface ISupplierRepository : IRepositoryBase<SupplierOrder>
+public interface ISupplierRepository : IBaseRepository<SupplierOrder>
 {
 }
