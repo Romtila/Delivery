@@ -14,28 +14,16 @@ public class BaseRepository<T> : IBaseRepository<T> where T : class
     }
 
     public void Add(T entity)
-    {
-        Context.Set<T>().Add(entity);
-        Context.SaveChanges();
-    }
+        => Context.Set<T>().Add(entity);
 
     public void Add(IEnumerable<T> entities)
-    {
-        Context.Set<T>().AddRange(entities);
-        Context.SaveChanges();
-    }
+        => Context.Set<T>().AddRange(entities);
 
     public void Update(T entity)
-    {
-        Context.Set<T>().Update(entity);
-        Context.SaveChanges();
-    }
+        => Context.Set<T>().Update(entity);
 
     public void Remove(T entity)
-    {
-        Context.Set<T>().Remove(entity);
-        Context.SaveChanges();
-    }
+        => Context.Set<T>().Remove(entity);
 
     public T? Find(long id)
         => Context.Set<T>().Find(id);
@@ -45,6 +33,9 @@ public class BaseRepository<T> : IBaseRepository<T> where T : class
 
     public IQueryable<T> Query()
         => Context.Set<T>().AsQueryable();
+
+    public void Commit()
+        => Context.SaveChanges();
 
 
     public async Task AddAsync(T entity, CancellationToken ct)

@@ -22,9 +22,9 @@ public class DeliveryService : IDeliveryService
         _httpClient = httpClient;
     }
 
-    public async Task<DeliveryOrder> Validate(long id, CancellationToken ct)
+    public DeliveryOrder Validate(long id)
     {
-        var order = await _repository.FindAsync(id, ct);
+        var order = _repository.Find(id);
 
         if (order is null)
             throw new DeliveryOrderNotFoundException();
@@ -32,46 +32,39 @@ public class DeliveryService : IDeliveryService
         return order;
     }
 
-    public async Task<DeliveryOrder> StartDelivery(long id, CancellationToken ct)
+    public DeliveryOrder StartDelivery(long id)
     {
-        var order = await Validate(id, ct);
+        var order = Validate(id);
         ValidateUpdatingOrder(order, DeliveryOrderStatus.Pending);
 
         order.Status = DeliveryOrderStatus.Delivering;
-        await _repository.UpdateAsync(order, ct);
+        _repository.Update(order);
 
         return order;
     }
 
-    public async Task<DeliveryOrder> FinishDelivery(long id, CancellationToken ct)
+    public DeliveryOrder FinishDelivery(long id)
     {
-        var order = await Validate(id, ct);
+        var order = Validate(id);
         ValidateUpdatingOrder(order, DeliveryOrderStatus.Delivering);
 
         order.Status = DeliveryOrderStatus.Delivered;
-        await _repository.UpdateAsync(order, ct);
+        _repository.Update(order);
 
         return order;
     }
 
-    public async Task HandleDelivery(SupplierFinishedEvent msg, CancellationToken ct)
+    public async Task HandleDelivery(SupplierFinishedEvent msg)
     {
-        var customer = await _httpClient.GetFromJsonAsync<CustomerResponse>(msg.CustomerId.ToString(), cancellationToken: ct);
+        var customer = await _httpClient.GetFromJsonAsync<CustomerResponse>(msg.CustomerId.ToString());
 
         if (customer is null)
             throw new BusinessLogicException("Error retrieving customer data");
 
         var entity = CreateDeliveryOrderFromMessage(msg, customer);
 
-        await _repository.AddAsync(entity, ct);
-    }
-
-    private static void ValidateUpdatingOrder(DeliveryOrder order, DeliveryOrderStatus allowedStatus)
-    {
-        if (order.Status == allowedStatus)
-            return;
-
-        throw new DeliveryOrderUpdateException(order.Status.GetDescription(true));
+        _repository.Add(entity);
+        _repository.Commit();
     }
 
     private static DeliveryOrder CreateDeliveryOrderFromMessage(SupplierFinishedEvent msg, CustomerResponse customer)
@@ -84,5 +77,13 @@ public class DeliveryService : IDeliveryService
             , DeliveryAddress = customer.Address
             , Status = DeliveryOrderStatus.Pending
         };
+    }
+
+    private static void ValidateUpdatingOrder(DeliveryOrder order, DeliveryOrderStatus allowedStatus)
+    {
+        if (order.Status == allowedStatus)
+            return;
+
+        throw new DeliveryOrderUpdateException(order.Status.GetDescription(true));
     }
 }

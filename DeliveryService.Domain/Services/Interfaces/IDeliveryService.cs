@@ -5,8 +5,8 @@ namespace DeliveryService.Domain.Services.Interfaces;
 
 public interface IDeliveryService
 {
-    Task<DeliveryOrder> Validate(long id, CancellationToken ct);
-    Task<DeliveryOrder> StartDelivery(long id, CancellationToken ct);
-    Task<DeliveryOrder> FinishDelivery(long id, CancellationToken ct);
-    Task HandleDelivery(SupplierFinishedEvent msg, CancellationToken ct);
+    DeliveryOrder Validate(long id);
+    DeliveryOrder StartDelivery(long id);
+    DeliveryOrder FinishDelivery(long id);
+    Task HandleDelivery(SupplierFinishedEvent msg);
 }

@@ -19,9 +19,9 @@ public class SupplierService : ISupplierService
         _orderItemRepository = orderItemRepository;
     }
 
-    public async Task<SupplierOrder> Validate(long id, CancellationToken ct)
+    public SupplierOrder Validate(long id)
     {
-        var kitchenOrder = await _repository.FindAsync(id, ct);
+        var kitchenOrder = _repository.Find(id);
 
         if (kitchenOrder is null)
             throw new SupplierOrderNotFoundException();
@@ -29,34 +29,35 @@ public class SupplierService : ISupplierService
         return kitchenOrder;
     }
 
-    public async Task<SupplierOrder> FinishOrder(long id, CancellationToken ct)
+    public SupplierOrder FinishOrder(long id)
     {
-        var kitchenOrder = await Validate(id, ct);
+        var kitchenOrder = Validate(id);
 
         ValidateUpdatingOrder(kitchenOrder);
 
         kitchenOrder.Status = SupplierOrderStatus.Finished;
-        await _repository.UpdateAsync(kitchenOrder, ct);
+        _repository.Update(kitchenOrder);
 
         return kitchenOrder;
     }
 
-    public async Task<SupplierOrder> CancelOrder(long id, CancellationToken ct)
+    public SupplierOrder CancelOrder(long id)
     {
-        var kitchenOrder = await Validate(id, ct);
+        var kitchenOrder = Validate(id);
 
         ValidateUpdatingOrder(kitchenOrder);
 
         kitchenOrder.Status = SupplierOrderStatus.Cancelled;
-        await _repository.UpdateAsync(kitchenOrder, ct);
+        _repository.Update(kitchenOrder);
 
         return kitchenOrder;
     }
 
-    public async Task HandleNewOrder(SupplierOrder entity, CancellationToken ct)
+    public void HandleNewOrder(SupplierOrder entity)
     {
-        await _repository.AddAsync(entity, ct);
-        await _orderItemRepository.AddAsync(entity.Items, ct);
+        _repository.Add(entity);
+        _orderItemRepository.Add(entity.Items);
+        _repository.Commit();
     }
 
     private static void ValidateUpdatingOrder(SupplierOrder order)

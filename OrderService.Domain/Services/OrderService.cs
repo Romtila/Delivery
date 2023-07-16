@@ -21,49 +21,50 @@ public class OrderService : IOrderService
         _httpClient = httpClient;
     }
 
-    public async Task<Order> Validate(long id, CancellationToken ct)
+    public Order Validate(long id)
     {
-        var order = await _repository.FindAsync(id, ct);
+        var order = _repository.Find(id);
 
-        if (order is null)
+        if (order is null) 
             throw new OrderNotFoundException();
 
         return order;
     }
 
-    public async Task<Order> Add(CreateNewOrderCommand command, CancellationToken ct)
+    public async Task<Order> Add(CreateNewOrderCommand command)
     {
         var orderTotal = command.Items.Sum(x => x.Price * x.Quantity);
 
         var orderItems = command.Items.Select(CreateOrderItemFromCommand).ToList();
         var order = CreateOrderFromCommand(command, orderItems, orderTotal);
-        await _repository.AddAsync(order, ct);
-        await _orderItemRepository.AddAsync(orderItems, ct);
+        
+        _repository.Add(order);
+        _orderItemRepository.Add(orderItems);
 
-        await ChargeCustomer(command.CustomerId, orderTotal, ct);
+        await ChargeCustomer(command.CustomerId, orderTotal);
 
         return order;
     }
 
-    public async Task HandleOrderCancelledEvent(long orderId, CancellationToken ct)
+    public async Task HandleOrderCancelledEvent(long orderId)
     {
-        var order = await Validate(orderId, ct);
-        await RefundCustomer(order.CustomerId, order.Total, ct);
+        var order = Validate(orderId);
+        await RefundCustomer(order.CustomerId, order.Total);
     }
 
-    private async Task RefundCustomer(long customerId, decimal orderTotal, CancellationToken ct)
+    private async Task RefundCustomer(long customerId, decimal orderTotal)
     {
-        using var response = await _httpClient.PutAsJsonAsync("balances", RefundCustomerRequest.Create(customerId, orderTotal), cancellationToken: ct);
+        using var response = await _httpClient.PutAsJsonAsync("balances", RefundCustomerRequest.Create(customerId, orderTotal));
 
-        if (!response.IsSuccessStatusCode)
+        if (!response.IsSuccessStatusCode) 
             throw new ErrorRefundingCustomer();
     }
 
-    private async Task ChargeCustomer(long customerId, decimal orderTotal, CancellationToken ct)
+    private async Task ChargeCustomer(long customerId, decimal orderTotal)
     {
-        using var response = await _httpClient.PutAsJsonAsync("charges", ChargeCustomerRequest.Create(customerId, orderTotal), cancellationToken: ct);
+        using var response = await _httpClient.PutAsJsonAsync("charges", ChargeCustomerRequest.Create(customerId, orderTotal));
 
-        if (!response.IsSuccessStatusCode)
+        if (!response.IsSuccessStatusCode) 
             throw new ErrorChargingCustomer();
     }
 

@@ -11,6 +11,7 @@ public interface IBaseRepository<T> where T : class
     T? Find(long id);
     T? Find(Expression<Func<T, bool>> expression);
     IQueryable<T> Query();
+    void Commit();
 
     Task AddAsync(T entity, CancellationToken ct);
     Task AddAsync(IEnumerable<T> entities, CancellationToken ct);

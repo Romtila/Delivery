@@ -19,60 +19,66 @@ public class OrderHistoryService : IOrderHistoryService
         _orderItemHistoryRepository = orderItemHistoryRepository;
     }
 
-    public async Task HandleOrderCancelledEvent(long orderId, CancellationToken ct)
+    public void HandleOrderCancelledEvent(long orderId)
     {
-        var order = await Validate(orderId, ct);
+        var order = Validate(orderId);
 
         order.Status = OrderHistoryStatus.Cancelled;
-        await UpdateAndCommitOrder(order, ct);
+
+        UpdateAndCommitOrder(order);
     }
 
-    public async Task HandleOrderCompletedEvent(long orderId, CancellationToken ct)
+    public void HandleOrderCompletedEvent(long orderId)
     {
-        var order = await Validate(orderId, ct);
+        var order = Validate(orderId);
 
         order.Status = OrderHistoryStatus.Completed;
         order.DeliveredAt = DateTime.Now;
-        await UpdateAndCommitOrder(order, ct);
+
+        UpdateAndCommitOrder(order);
     }
 
-    public async Task HandleNewOrder(OrderHistory entity, CancellationToken ct)
+    public void HandleNewOrder(OrderHistory entity)
     {
         entity.CreatedAt = DateTime.Now;
         entity.Status = OrderHistoryStatus.Preparing;
-        await _repository.AddAsync(entity, ct);
-        await _orderItemHistoryRepository.AddAsync(entity.Items, ct);
+
+        _repository.Add(entity);
+        _orderItemHistoryRepository.Add(entity.Items);
+        _repository.Commit();
     }
 
-    public async Task HandleDeliveryStartedEvent(DeliveryStartedEvent contextMessage, CancellationToken ct)
+    public void HandleDeliveryStartedEvent(DeliveryStartedEvent contextMessage)
     {
-        var order = await Validate(contextMessage.OrderId, ct);
+        var order = Validate(contextMessage.OrderId);
 
         order.Status = OrderHistoryStatus.Delivering;
         order.DeliveryAddress = contextMessage.DeliveryAddress;
-        await UpdateAndCommitOrder(order, ct);
+
+        UpdateAndCommitOrder(order);
     }
 
-    public async Task HandleKitchenFinishedEvent(SupplierFinishedEvent contextMessage, CancellationToken ct)
+    public void HandleKitchenFinishedEvent(SupplierFinishedEvent contextMessage)
     {
-        var order = await Validate(contextMessage.OrderId, ct);
+        var order = Validate(contextMessage.OrderId);
 
         order.Status = OrderHistoryStatus.AwaitingPickup;
-        await UpdateAndCommitOrder(order, ct);
+        UpdateAndCommitOrder(order);
     }
 
-    private async Task UpdateAndCommitOrder(OrderHistory order, CancellationToken ct)
+    private OrderHistory Validate(long id)
     {
-        await _repository.UpdateAsync(order, ct);
-    }
-
-    private async Task<OrderHistory> Validate(long id, CancellationToken ct)
-    {
-        var orderHistory = await _repository.FindAsync(id, ct);
+        var orderHistory = _repository.Find(id);
 
         if (orderHistory is null)
             throw new OrderHistoryNotFoundException();
 
         return orderHistory;
+    }
+
+    private void UpdateAndCommitOrder(OrderHistory order)
+    {
+        _repository.Update(order);
+        _repository.Commit();
     }
 }

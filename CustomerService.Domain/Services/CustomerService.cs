@@ -15,9 +15,9 @@ public class CustomerService : ICustomerService
         _repository = repository;
     }
 
-    public async Task<Customer> Validate(long id, CancellationToken ct)
+    public Customer Validate(long id)
     {
-        var customer = await _repository.FindAsync(id, ct);
+        var customer = _repository.Find(id);
 
         if (customer is null || !customer.IsActive)
             throw new CustomerNotFoundException();
@@ -25,31 +25,32 @@ public class CustomerService : ICustomerService
         return customer;
     }
 
-    public async Task Remove(long id, CancellationToken ct)
+    public void Remove(long id)
     {
-        var customer = await Validate(id, ct);
+        var customer = Validate(id);
 
         if (customer.Balance > 0M)
             throw new BusinessLogicException("It is not possible to delete a customer that has remaining balance");
 
         customer.IsActive = false;
-        await _repository.UpdateAsync(customer, ct);
+        _repository.Update(customer);
     }
 
-    public async Task AddBalance(Customer customer, decimal balance, CancellationToken ct)
+    public void AddBalance(Customer customer, decimal balance)
     {
         customer.Balance += balance;
-        await _repository.UpdateAsync(customer, ct);
+
+        _repository.Update(customer);
     }
 
-    public async Task ChargeCustomer(long customerId, decimal orderTotal, CancellationToken ct)
+    public void ChargeCustomer(long customerId, decimal orderTotal)
     {
-        var customer = await Validate(customerId, ct);
+        var customer = Validate(customerId);
 
         if (customer.Balance < orderTotal)
             throw new BusinessLogicException("The customer does not have enough balance to pay for this order.");
 
         customer.Balance -= orderTotal;
-        await _repository.UpdateAsync(customer, ct);
+        _repository.Update(customer);
     }
 }

@@ -5,9 +5,9 @@ namespace OrderService.Domain.Services.Interfaces;
 
 public interface IOrderService
 {
-    Task<Order> Validate(long id, CancellationToken ct);
-    Task<Order> Add(CreateNewOrderCommand command, CancellationToken ct);
+    Order Validate(long id);
+    Task<Order> Add(CreateNewOrderCommand command);
 
-    Task HandleOrderCancelledEvent(long orderId, CancellationToken ct);
+    Task HandleOrderCancelledEvent(long orderId);
     // Task HandleOrderUpdatedEvent(long orderId, OrderStatus newStatus, CancellationToken ct);
 }
