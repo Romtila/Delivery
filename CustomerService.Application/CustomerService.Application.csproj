@@ -9,13 +9,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\CustomerService.Domain\CustomerService.Domain.csproj"/>
+        <ProjectReference Include="..\CustomerService.Domain\CustomerService.Domain.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Dtos\"/>
-        <Folder Include="MapperProfiles\"/>
-        <Folder Include="Services\"/>
+        <PackageReference Include="MassTransit" Version="8.0.16"/>
+        <PackageReference Include="MassTransit.Kafka" Version="8.0.16"/>
+        <PackageReference Include="Riok.Mapperly" Version="2.8.0" />
     </ItemGroup>
 
 </Project>

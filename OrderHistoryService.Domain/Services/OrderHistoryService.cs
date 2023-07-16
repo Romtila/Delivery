@@ -58,7 +58,7 @@ public class OrderHistoryService : IOrderHistoryService
         UpdateAndCommitOrder(order);
     }
 
-    public void HandleKitchenFinishedEvent(SupplierFinishedEvent contextMessage)
+    public void HandleSupplierFinishedEvent(SupplierFinishedEvent contextMessage)
     {
         var order = Validate(contextMessage.OrderId);
 

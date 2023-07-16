@@ -21,36 +21,36 @@ public class SupplierService : ISupplierService
 
     public SupplierOrder Validate(long id)
     {
-        var kitchenOrder = _repository.Find(id);
+        var supplierOrder = _repository.Find(id);
 
-        if (kitchenOrder is null)
+        if (supplierOrder is null)
             throw new SupplierOrderNotFoundException();
 
-        return kitchenOrder;
+        return supplierOrder;
     }
 
     public SupplierOrder FinishOrder(long id)
     {
-        var kitchenOrder = Validate(id);
+        var supplierOrder = Validate(id);
 
-        ValidateUpdatingOrder(kitchenOrder);
+        ValidateUpdatingOrder(supplierOrder);
 
-        kitchenOrder.Status = SupplierOrderStatus.Finished;
-        _repository.Update(kitchenOrder);
+        supplierOrder.Status = SupplierOrderStatus.Finished;
+        _repository.Update(supplierOrder);
 
-        return kitchenOrder;
+        return supplierOrder;
     }
 
     public SupplierOrder CancelOrder(long id)
     {
-        var kitchenOrder = Validate(id);
+        var supplierOrder = Validate(id);
 
-        ValidateUpdatingOrder(kitchenOrder);
+        ValidateUpdatingOrder(supplierOrder);
 
-        kitchenOrder.Status = SupplierOrderStatus.Cancelled;
-        _repository.Update(kitchenOrder);
+        supplierOrder.Status = SupplierOrderStatus.Cancelled;
+        _repository.Update(supplierOrder);
 
-        return kitchenOrder;
+        return supplierOrder;
     }
 
     public void HandleNewOrder(SupplierOrder entity)

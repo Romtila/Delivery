@@ -10,5 +10,5 @@ public interface IOrderHistoryService
     void HandleOrderCompletedEvent(long orderId);
     void HandleNewOrder(OrderHistory entity);
     void HandleDeliveryStartedEvent(DeliveryStartedEvent contextMessage);
-    void HandleKitchenFinishedEvent(SupplierFinishedEvent contextMessage);
+    void HandleSupplierFinishedEvent(SupplierFinishedEvent contextMessage);
 }
