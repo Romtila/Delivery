@@ -9,6 +9,7 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.7"/>
+        <PackageReference Include="Scrutor" Version="4.2.2"/>
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0"/>
     </ItemGroup>
 
@@ -20,6 +21,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\CustomerService.Application\CustomerService.Application.csproj"/>
+        <ProjectReference Include="..\CustomerService.Infrastructure\CustomerService.Infrastructure.csproj"/>
     </ItemGroup>
 
 </Project>
